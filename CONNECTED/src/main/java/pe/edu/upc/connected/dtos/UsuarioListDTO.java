@@ -1,20 +1,13 @@
 package pe.edu.upc.connected.dtos;
 
-import jakarta.persistence.*;
 import pe.edu.upc.connected.entities.Rol;
 
-import java.time.LocalDate;
-
-public class UsuarioGeneralDTO {
+public class UsuarioListDTO {
     private int IdUsuario;
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String correo;
-    private String contraseña;
-    private String estadoCuenta;
-    private LocalDate fechaRegistro;
-    private LocalDate ultimaSesion;
     private Rol rol;
 
     public int getIdUsuario() {
@@ -55,38 +48,6 @@ public class UsuarioGeneralDTO {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    public String getEstadoCuenta() {
-        return estadoCuenta;
-    }
-
-    public void setEstadoCuenta(String estadoCuenta) {
-        this.estadoCuenta = estadoCuenta;
-    }
-
-    public LocalDate getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(LocalDate fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
-    public LocalDate getUltimaSesion() {
-        return ultimaSesion;
-    }
-
-    public void setUltimaSesion(LocalDate ultimaSesion) {
-        this.ultimaSesion = ultimaSesion;
     }
 
     public Rol getRol() {

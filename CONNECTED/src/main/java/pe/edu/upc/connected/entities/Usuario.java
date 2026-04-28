@@ -18,23 +18,30 @@ public class Usuario {
 
     @Column(name = "apellidoMaterno",length =50 ,nullable =false )
     private String apellidoMaterno;
+
     @Column(name = "correo",length =50 ,nullable =false )
     private String correo;
+
     @Column(name = "contraseña",length =50 ,nullable =false )
     private String contraseña;
+
     @Column(name = "estadoCuenta",length =50 ,nullable =false )
     private String estadoCuenta;
+
     @Column(name = "fechaRegistro" ,nullable =false )
     private LocalDate fechaRegistro;
+
     @Column(name = "ultimaSesion" ,nullable =false )
     private LocalDate ultimaSesion;
-    @Id
-    private int IdRol;
+
+    @OneToOne
+    @JoinColumn(name = "IdRol")
+    private Rol rol;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, String correo, String contraseña, String estadoCuenta, LocalDate fechaRegistro, LocalDate ultimaSesion, int idRol) {
+    public Usuario(int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, String correo, String contraseña, String estadoCuenta, LocalDate fechaRegistro, LocalDate ultimaSesion, Rol rol) {
         IdUsuario = idUsuario;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
@@ -44,7 +51,7 @@ public class Usuario {
         this.estadoCuenta = estadoCuenta;
         this.fechaRegistro = fechaRegistro;
         this.ultimaSesion = ultimaSesion;
-        IdRol = idRol;
+        this.rol = rol;
     }
 
     public int getIdUsuario() {
@@ -119,11 +126,11 @@ public class Usuario {
         this.ultimaSesion = ultimaSesion;
     }
 
-    public int getIdRol() {
-        return IdRol;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setIdRol(int idRol) {
-        IdRol = idRol;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }

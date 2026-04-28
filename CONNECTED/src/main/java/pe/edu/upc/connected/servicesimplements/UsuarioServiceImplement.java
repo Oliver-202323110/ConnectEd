@@ -15,5 +15,5 @@ public class UsuarioServiceImplement implements IUsuarioService {
    private IUsuarioRepository  UsuarioRepositorio;
 
    @Override
-    public List<Usuario> list() { return UsuarioRepositorio.findAll(); }
+   public List<Usuario> list() { return UsuarioRepositorio.findAll(); }
 }
