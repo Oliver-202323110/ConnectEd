@@ -7,6 +7,7 @@ import pe.edu.upc.connected.repositories.IUsuarioRepository;
 import pe.edu.upc.connected.servicesinterfaces.IUsuarioService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImplement implements IUsuarioService {
@@ -16,4 +17,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
    @Override
    public List<Usuario> list() { return UsuarioRepositorio.findAll(); }
+
+   @Override
+   public Optional<Usuario> listId(int id) {
+      return UsuarioRepositorio.findById(id);
+   }
 }
