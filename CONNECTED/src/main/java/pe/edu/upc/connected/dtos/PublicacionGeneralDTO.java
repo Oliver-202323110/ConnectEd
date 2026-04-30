@@ -1,39 +1,14 @@
-package pe.edu.upc.connected.entities;
-
-
-import jakarta.persistence.*;
+package pe.edu.upc.connected.dtos;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "Publicacion")
-public class Publicacion {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PublicacionGeneralDTO {
     private int idPublicacion;
-    @Column(name = "contenidoPublicacion",length = 20,nullable = false)
     private String contenidoPublicacion;
-    @Column(name = "tipoPublicacion",length = 20,nullable = false)
     private String tipoPublicacion;
-    @Column(name = "visibilidadPublicacion",length = 20,nullable = false)
     private String visibilidadPublicacion;
-    @Column(name = "fechaPublicacion",nullable = false)
     private LocalDate fechaPublicacion;
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
-
-    public Publicacion() {
-    }
-
-    public Publicacion(int idPublicacion, String contenidoPublicacion, String tipoPublicacion, String visibilidadPublicacion, LocalDate fechaPublicacion, Usuario usuario) {
-        this.idPublicacion = idPublicacion;
-        this.contenidoPublicacion = contenidoPublicacion;
-        this.tipoPublicacion = tipoPublicacion;
-        this.visibilidadPublicacion = visibilidadPublicacion;
-        this.fechaPublicacion = fechaPublicacion;
-        this.usuario = usuario;
-    }
+    private int IdUsuario;
 
     public int getIdPublicacion() {
         return idPublicacion;
@@ -75,11 +50,11 @@ public class Publicacion {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return IdUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        IdUsuario = idUsuario;
     }
 }
