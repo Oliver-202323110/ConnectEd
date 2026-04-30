@@ -9,8 +9,8 @@ public class MentoriaGeneralDTO {
     private String estadoMentoria;
     private LocalDate fechaInicioMentoria;
     private LocalDate fechaFinMentoria;
-    private int idusuarioestudiante;
-    private int idusuariomentor;
+    private int estudianteIdUsuario;
+    private int mentorIdUsuario;
 
     public int getIdMentoria() {
         return idMentoria;
@@ -44,19 +44,19 @@ public class MentoriaGeneralDTO {
         this.fechaFinMentoria = fechaFinMentoria;
     }
 
-    public int getIdusuarioestudiante() {
-        return idusuarioestudiante;
+    public int getEstudianteIdUsuario() {
+        return estudianteIdUsuario;
     }
 
-    public void setIdusuarioestudiante(int idusuarioestudiante) {
-        this.idusuarioestudiante = idusuarioestudiante;
+    public void setEstudianteIdUsuario(int estudianteIdUsuario) {
+        this.estudianteIdUsuario = estudianteIdUsuario;
     }
 
-    public int getIdusuariomentor() {
-        return idusuariomentor;
+    public int getMentorIdUsuario() {
+        return mentorIdUsuario;
     }
 
-    public void setIdusuariomentor(int idusuariomentor) {
-        this.idusuariomentor = idusuariomentor;
+    public void setMentorIdUsuario(int mentorIdUsuario) {
+        this.mentorIdUsuario = mentorIdUsuario;
     }
 }
