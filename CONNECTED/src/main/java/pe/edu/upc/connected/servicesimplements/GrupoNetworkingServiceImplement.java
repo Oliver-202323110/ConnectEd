@@ -1,12 +1,14 @@
 package pe.edu.upc.connected.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pe.edu.upc.connected.entities.GrupoNetworking;
 import pe.edu.upc.connected.repositories.IGrupoNetworkingRepository;
 import pe.edu.upc.connected.servicesinterfaces.IGrupoNetworkingService;
 
 import java.util.List;
 
+@Service
 public class GrupoNetworkingServiceImplement implements IGrupoNetworkingService {
 
     @Autowired
