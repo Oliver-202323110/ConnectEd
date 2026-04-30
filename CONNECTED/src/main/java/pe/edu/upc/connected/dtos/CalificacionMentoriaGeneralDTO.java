@@ -10,7 +10,4 @@ public class CalificacionMentoriaGeneralDTO {
     private int puntuacionCalificacionMentoria;
     private String comentarioCalificacionMentoria;
     private LocalDate dateCalificacionMentoria;
-    private int emisorId;
-    private int receptorId;
-    private int mentorRecomendadoid;
 }

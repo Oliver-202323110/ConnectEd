@@ -17,17 +17,7 @@ public class CalificacionMentoria {
     @Column(name = "dateCalificacionMentoria",nullable = false)
     private LocalDate dateCalificacionMentoria;
 
-    @ManyToOne
-    @JoinColumn(name = "idemisor")
-    private Usuario emisor;
 
-    @ManyToOne
-    @JoinColumn(name = "idreceptor")
-    private Usuario receptor;
-
-    @ManyToOne
-    @JoinColumn(name = "idmentorRecomendado")
-    private Usuario mentorRecomendado;
 
     public CalificacionMentoria() {
     }
@@ -37,9 +27,7 @@ public class CalificacionMentoria {
         this.puntuacionCalificacionMentoria = puntuacionCalificacionMentoria;
         this.comentarioCalificacionMentoria = comentarioCalificacionMentoria;
         this.dateCalificacionMentoria = dateCalificacionMentoria;
-        this.emisor = emisor;
-        this.receptor = receptor;
-        this.mentorRecomendado = mentorRecomendado;
+
     }
 
     public int getIdMentoria() {
@@ -74,27 +62,4 @@ public class CalificacionMentoria {
         this.dateCalificacionMentoria = dateCalificacionMentoria;
     }
 
-    public Usuario getEmisor() {
-        return emisor;
-    }
-
-    public void setEmisor(Usuario emisor) {
-        this.emisor = emisor;
-    }
-
-    public Usuario getReceptor() {
-        return receptor;
-    }
-
-    public void setReceptor(Usuario receptor) {
-        this.receptor = receptor;
-    }
-
-    public Usuario getMentorRecomendado() {
-        return mentorRecomendado;
-    }
-
-    public void setMentorRecomendado(Usuario mentorRecomendado) {
-        this.mentorRecomendado = mentorRecomendado;
-    }
 }
