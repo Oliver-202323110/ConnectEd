@@ -13,13 +13,13 @@ import java.util.Optional;
 public class UsuarioServiceImplement implements IUsuarioService {
 
    @Autowired
-   private IUsuarioRepository  usuarioRepositorio;
+   private IUsuarioRepository  uS;
 
    @Override
-   public List<Usuario> list() { return UsuarioRepositorio.findAll(); }
+   public List<Usuario> list() { return uS.findAll(); }
 
    @Override
    public Optional<Usuario> listId(int id) {
-      return UsuarioRepositorio.findById(id);
+      return uS.findById(id);
    }
 }

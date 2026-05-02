@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "RecomendacionSistema")
 public class RecomendacionSistema {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
