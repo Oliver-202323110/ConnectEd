@@ -5,5 +5,10 @@ import pe.edu.upc.connected.entities.ChatParticipante;
 import java.util.List;
 
 public interface IChatParticipanteService {
-    public List<ChatParticipante> list();
+    List<ChatParticipante> list();
+    ChatParticipante save(ChatParticipante chatParticipante);
+    ChatParticipante findById(int id);
+    void delete(int id);
+    List<ChatParticipante> listarParticipantesPorChat(int idChat);
+    List<ChatParticipante> listarChatsPorUsuario(int idUsuario);
 }
