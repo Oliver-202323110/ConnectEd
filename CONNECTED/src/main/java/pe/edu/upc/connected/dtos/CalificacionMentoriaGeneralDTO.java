@@ -10,8 +10,8 @@ public class CalificacionMentoriaGeneralDTO {
     private int puntuacionCalificacionMentoria;
     private String comentarioCalificacionMentoria;
     private LocalDate dateCalificacionMentoria;
-    private int mentoriaIdMentoria;
-    private int usuarioIdUsuario;
+    private int idMentoria;
+    private int idUsuario;
 
     public int getIdCalificacionMentoria() {
         return idCalificacionMentoria;
@@ -45,19 +45,19 @@ public class CalificacionMentoriaGeneralDTO {
         this.dateCalificacionMentoria = dateCalificacionMentoria;
     }
 
-    public int getMentoriaIdMentoria() {
-        return mentoriaIdMentoria;
+    public int getIdMentoria() {
+        return idMentoria;
     }
 
-    public void setMentoriaIdMentoria(int mentoriaIdMentoria) {
-        this.mentoriaIdMentoria = mentoriaIdMentoria;
+    public void setIdMentoria(int idMentoria) {
+        this.idMentoria = idMentoria;
     }
 
-    public int getUsuarioIdUsuario() {
-        return usuarioIdUsuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuarioIdUsuario(int usuarioIdUsuario) {
-        this.usuarioIdUsuario = usuarioIdUsuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }

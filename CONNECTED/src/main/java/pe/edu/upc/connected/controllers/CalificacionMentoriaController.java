@@ -43,12 +43,12 @@ public class CalificacionMentoriaController {
     public ResponseEntity<?> registrar(@RequestBody CalificacionMentoriaGeneralDTO dto) {
         ModelMapper m = new ModelMapper();
 
-        Optional<Mentoria> mentoria = meS.listId(dto.getMentoriaIdMentoria());
+        Optional<Mentoria> mentoria = meS.listId(dto.getIdMentoria());
         if (mentoria.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("La mentoría no existe");
         }
-        Optional<Usuario> usuario = uS.listId(dto.getUsuarioIdUsuario());
+        Optional<Usuario> usuario = uS.listId(dto.getIdUsuario());
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("El usuario no existe");
@@ -87,13 +87,13 @@ public class CalificacionMentoriaController {
                     .body("Calificación no encontrada");
         }
 
-        Optional<Mentoria> mentoria = meS.listId(dto.getMentoriaIdMentoria());
+        Optional<Mentoria> mentoria = meS.listId(dto.getIdMentoria());
         if (mentoria.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("La mentoría no existe");
         }
 
-        Optional<Usuario> usuario = uS.listId(dto.getUsuarioIdUsuario());
+        Optional<Usuario> usuario = uS.listId(dto.getIdUsuario());
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("El usuario no existe");
