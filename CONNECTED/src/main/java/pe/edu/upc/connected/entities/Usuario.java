@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int IdUsuario;
+    private int idUsuario;
 
     @Column(name = "nombres",length =50 ,nullable =false )
     private String nombres;
@@ -42,7 +42,7 @@ public class Usuario {
     }
 
     public Usuario(int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, String correo, String contraseña, String estadoCuenta, LocalDate fechaRegistro, LocalDate ultimaSesion, Rol rol) {
-        IdUsuario = idUsuario;
+        this.idUsuario = idUsuario;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -55,11 +55,11 @@ public class Usuario {
     }
 
     public int getIdUsuario() {
-        return IdUsuario;
+        return idUsuario;
     }
 
     public void setIdUsuario(int idUsuario) {
-        IdUsuario = idUsuario;
+        this.idUsuario = idUsuario;
     }
 
     public String getNombres() {
