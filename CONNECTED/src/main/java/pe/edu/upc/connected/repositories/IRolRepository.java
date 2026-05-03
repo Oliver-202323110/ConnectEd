@@ -6,7 +6,5 @@ import pe.edu.upc.connected.entities.Evento;
 import pe.edu.upc.connected.entities.Rol;
 
 @Repository
-
 public interface IRolRepository extends JpaRepository<Rol, Integer> {
-
 }

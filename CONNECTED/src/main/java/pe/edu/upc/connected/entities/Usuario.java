@@ -34,8 +34,8 @@ public class Usuario {
     @Column(name = "ultimaSesion" ,nullable =false )
     private LocalDate ultimaSesion;
 
-    @OneToOne
-    @JoinColumn(name = "IdRol")
+    @ManyToOne
+    @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
 
     public Usuario() {

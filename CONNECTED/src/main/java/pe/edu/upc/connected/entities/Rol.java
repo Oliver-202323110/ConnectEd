@@ -3,14 +3,14 @@ package pe.edu.upc.connected.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Rol")
+@Table(name = "rol")
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdRol")
+    @Column(name = "id_rol")
     private int idRol;
 
-    @Column(name = "nombreRol", length = 50, nullable =false )
+    @Column(name = "nombre_rol", length = 50, nullable = false)
     private String nombreRol;
 
     public Rol() {
