@@ -16,6 +16,14 @@ public class UsuarioServiceImplement implements IUsuarioService {
    private IUsuarioRepository  usuarioRepositorio;
 
    @Override
+   public List<Usuario> list() { return UsuarioRepositorio.findAll(); }
+
+   @Override
+   public Usuario insert(Usuario u) {
+      return UsuarioRepositorio.save(u);
+   }
+
+
    public List<Usuario> list() { return usuarioRepositorio.findAll(); }
 
    @Override
