@@ -12,17 +12,17 @@ import java.util.List;
 public class UsuarioSeguidorServiceImplement implements IUsuarioSeguidorService {
 
     @Autowired
-    private IUsuarioSeguidorRepository UsuarioSeguidorRepositorio;
+    private IUsuarioSeguidorRepository uR;
 
     @Override
-    public List<UsuarioSeguidor> list() { return UsuarioSeguidorRepositorio.findAll(); }
+    public List<UsuarioSeguidor> list() { return uR.findAll(); }
 
     @Override
-    public UsuarioSeguidor save(UsuarioSeguidor usuarioSeguidor) { return UsuarioSeguidorRepositorio.save(usuarioSeguidor); }
+    public UsuarioSeguidor save(UsuarioSeguidor usuarioSeguidor) { return uR.save(usuarioSeguidor); }
 
     @Override
-    public UsuarioSeguidor findById(int id) { return UsuarioSeguidorRepositorio.findById(id).orElse(null); }
+    public UsuarioSeguidor findById(int id) { return uR.findById(id).orElse(null); }
 
     @Override
-    public void delete(int id) { UsuarioSeguidorRepositorio.deleteById(id); }
+    public void delete(int id) { uR.deleteById(id); }
 }

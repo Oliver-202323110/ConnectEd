@@ -35,4 +35,21 @@ public class UsuarioServiceImplement implements IUsuarioService {
    public Optional<Usuario> listId(int id) {
       return usuarioRepositorio.findById(id);
    }
+    @Autowired
+    private IUsuarioRepository uR;
+
+    @Override
+    public List<Usuario> list() {
+        return uR.findAll();
+    }
+
+    @Override
+    public Usuario insert(Usuario u) {
+        return uR.save(u);
+    }
+
+    @Override
+    public Optional<Usuario> listId(int id) {
+        return uR.findById(id);
+    }
 }

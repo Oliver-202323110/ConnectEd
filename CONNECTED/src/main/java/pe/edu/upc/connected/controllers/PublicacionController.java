@@ -11,6 +11,7 @@ import pe.edu.upc.connected.entities.Usuario;
 import pe.edu.upc.connected.servicesinterfaces.IPublicacionService;
 import pe.edu.upc.connected.servicesinterfaces.IUsuarioService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,9 +39,25 @@ public class PublicacionController {
 
         return ResponseEntity.ok(lista);
     }
+
+    @GetMapping("/buscarPorFecha")
+    public ResponseEntity<List<PublicacionGeneralDTO>> buscarPorFecha(@RequestParam LocalDate f1, @RequestParam LocalDate f2) {
+        ModelMapper m = new ModelMapper();
+        List<PublicacionGeneralDTO> lista = pS.buscarPorRangoDeFechas(f1, f2)
+                .stream()
+                .map(y -> m.map(y, PublicacionGeneralDTO.class))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(lista);
+    }
+
+    @GetMapping("/cantidad-por-usuario")
+    public ResponseEntity<List<Object[]>> obtenerCantidadPorUsuario() {
+        List<Object[]> lista = pS.countPublicacionesByUser();
+        return ResponseEntity.ok(lista);
+    }
+
     @PostMapping("/nuevo")
     public ResponseEntity<?> registrar(@RequestBody PublicacionGeneralDTO dto) {
-
         ModelMapper m = new ModelMapper();
         Optional<Usuario> usuario = uS.listId(dto.getIdUsuario());
         if (usuario.isEmpty()) {
@@ -56,6 +73,7 @@ public class PublicacionController {
                 .status(HttpStatus.CREATED)
                 .body(responseDTO);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable int id) {
         ModelMapper m = new ModelMapper();
@@ -69,9 +87,9 @@ public class PublicacionController {
                     .body("Publicacion no encontrada");
         }
     }
+
     @PutMapping("/actualiza")
     public ResponseEntity<String> actualizar(@RequestBody PublicacionGeneralDTO dto) {
-
         Optional<Publicacion> existente = pS.listId(dto.getIdPublicacion());
 
         if (existente.isEmpty()) {
@@ -87,7 +105,6 @@ public class PublicacionController {
         }
 
         Publicacion publ = existente.get();
-
         publ.setContenidoPublicacion(dto.getContenidoPublicacion());
         publ.setTipoPublicacion(dto.getTipoPublicacion());
         publ.setVisibilidadPublicacion(dto.getVisibilidadPublicacion());
@@ -98,6 +115,7 @@ public class PublicacionController {
 
         return ResponseEntity.ok("Publicacion actualizada correctamente");
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable int id) {
         Optional<Publicacion> publicacion = pS.listId(id);
