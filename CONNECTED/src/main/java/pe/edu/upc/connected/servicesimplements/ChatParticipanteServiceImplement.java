@@ -18,4 +18,29 @@ public class ChatParticipanteServiceImplement implements IChatParticipanteServic
     public List<ChatParticipante> list() {
         return chatParticipanteRepositorio.findAll();
     }
+
+    @Override
+    public ChatParticipante save(ChatParticipante chatParticipante) {
+        return chatParticipanteRepositorio.save(chatParticipante);
+    }
+
+    @Override
+    public ChatParticipante findById(int id) {
+        return chatParticipanteRepositorio.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(int id) {
+        chatParticipanteRepositorio.deleteById(id);
+    }
+
+    @Override
+    public List<ChatParticipante> listarParticipantesPorChat(int idChat) {
+        return chatParticipanteRepositorio.listarParticipantesPorChat(idChat);
+    }
+
+    @Override
+    public List<ChatParticipante> listarChatsPorUsuario(int idUsuario) {
+        return chatParticipanteRepositorio.listarChatsPorUsuario(idUsuario);
+    }
 }

@@ -18,4 +18,29 @@ public class MensajeServiceImplement implements IMensajeService {
     public List<Mensaje> list() {
         return mensajeRepositorio.findAll();
     }
+
+    @Override
+    public Mensaje save(Mensaje mensaje) {
+        return mensajeRepositorio.save(mensaje);
+    }
+
+    @Override
+    public Mensaje findById(int id) {
+        return mensajeRepositorio.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(int id) {
+        mensajeRepositorio.deleteById(id);
+    }
+
+    @Override
+    public List<Mensaje> listarMensajesPorChat(int idChat) {
+        return mensajeRepositorio.listarMensajesPorChat(idChat);
+    }
+
+    @Override
+    public List<Mensaje> listarMensajesNoLeidosPorUsuario(int idUsuario) {
+        return mensajeRepositorio.listarMensajesNoLeidosPorUsuario(idUsuario);
+    }
 }
