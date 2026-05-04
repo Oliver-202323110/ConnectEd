@@ -4,7 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.connected.dtos.UsuarioGeneralDTO;
 import pe.edu.upc.connected.dtos.UsuarioListDTO;
 import pe.edu.upc.connected.entities.Rol;
@@ -50,30 +53,5 @@ public class UsuarioController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(responseDTO);
-    }
-
-    @PutMapping("/actualizar-usuario")
-    public ResponseEntity<String> actualizar(@RequestBody UsuarioGeneralDTO dto) {
-        Optional<Rol> rol = rolServicio.listId(dto.getIdRol());
-        if (rol.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("El rol no existe");
-        }
-        Optional<Usuario> existente = uS.listId(dto.getIdUsuario());
-        if (existente.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Usuario no encontrado");
-        }
-        Usuario usu = existente.get();
-        usu.setNombres(dto.getNombres());
-        usu.setApellidoPaterno(dto.getApellidoPaterno());
-        usu.setApellidoMaterno(dto.getApellidoMaterno());
-        usu.setContraseña(dto.getContraseña());
-        usu.setCorreo(dto.getCorreo());
-        usu.setEstadoCuenta(dto.getEstadoCuenta());
-        usu.setFechaRegistro(dto.getFechaRegistro());
-        usu.setUltimaSesion(dto.getUltimaSesion());
-        uS.update(usu);
-        return ResponseEntity.ok("Usuario actualizado correctamente");
     }
 }
