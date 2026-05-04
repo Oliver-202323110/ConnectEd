@@ -16,6 +16,7 @@ import pe.edu.upc.connected.servicesinterfaces.IRolService;
 import pe.edu.upc.connected.servicesinterfaces.IUsuarioService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -36,24 +37,21 @@ public class UsuarioController {
         return ResponseEntity.ok(listaUsuarios);
     }
 
-    @PostMapping("/registrar-usuario")
-    public ResponseEntity<?> registrar(@RequestBody UsuarioGeneralDTO dto){
-        if (dto.getRol() == null || dto.getRol().getIdRol() <= 0) {
-            return ResponseEntity.badRequest().body("Debe enviar un rol existente con idRol.");
+    @PostMapping("/nuevo")
+    public ResponseEntity<?> registrar(@RequestBody UsuarioGeneralDTO dto) {
+        ModelMapper m = new ModelMapper();
+        Optional<Rol> rol = rolServicio.listId(dto.getIdRol());
+        if (rol.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("El rol no existe");
         }
+        Usuario u = m.map(dto, Usuario.class);
+        u.setRol(rol.get());
 
-        Rol rol = rolServicio.listId(dto.getRol().getIdRol())
-                .orElse(null);
-
-        if (rol == null) {
-            return ResponseEntity.badRequest().body("No existe un rol con idRol " + dto.getRol().getIdRol() + ".");
-        }
-
-        ModelMapper m=new ModelMapper();
-        Usuario u=m.map(dto, Usuario.class);
-        u.setRol(rol);
-        Usuario usu= uS.insert(u);
-        UsuarioGeneralDTO responseDTO=m.map(usu,UsuarioGeneralDTO.class);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
+        Usuario usu = uS.insert(u);
+        UsuarioGeneralDTO responseDTO = m.map(usu, UsuarioGeneralDTO.class);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(responseDTO);
     }
 }

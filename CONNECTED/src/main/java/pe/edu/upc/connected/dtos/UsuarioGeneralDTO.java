@@ -15,7 +15,7 @@ public class UsuarioGeneralDTO {
     private String estadoCuenta;
     private LocalDate fechaRegistro;
     private LocalDate ultimaSesion;
-    private Rol rol;
+    private int idRol;
 
     public int getIdUsuario() {
         return IdUsuario;
@@ -89,11 +89,11 @@ public class UsuarioGeneralDTO {
         this.ultimaSesion = ultimaSesion;
     }
 
-    public Rol getRol() {
-        return rol;
+    public int getIdRol() {
+        return idRol;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 }
