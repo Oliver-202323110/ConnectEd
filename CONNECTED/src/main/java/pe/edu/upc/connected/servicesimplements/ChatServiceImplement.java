@@ -18,4 +18,29 @@ public class ChatServiceImplement implements IChatService {
     public List<Chat> list() {
         return chatRepositorio.findAll();
     }
+
+    @Override
+    public Chat save(Chat chat) {
+        return chatRepositorio.save(chat);
+    }
+
+    @Override
+    public Chat findById(int id) {
+        return chatRepositorio.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(int id) {
+        chatRepositorio.deleteById(id);
+    }
+
+    @Override
+    public List<Chat> listarPorEstado(String estado) {
+        return chatRepositorio.listarChatsPorEstado(estado);
+    }
+
+    @Override
+    public List<Chat> listarPorTipo(String tipo) {
+        return chatRepositorio.listarChatsPorTipo(tipo);
+    }
 }
