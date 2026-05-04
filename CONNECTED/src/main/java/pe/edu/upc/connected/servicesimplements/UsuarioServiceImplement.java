@@ -29,4 +29,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     public Optional<Usuario> listId(int id) {
         return uR.findById(id);
     }
+
+    @Override
+    public void update(Usuario u) {
+        uR.save(u);
+    }
+
+
 }
