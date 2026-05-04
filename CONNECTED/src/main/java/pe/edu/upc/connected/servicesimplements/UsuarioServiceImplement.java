@@ -30,9 +30,15 @@ public class UsuarioServiceImplement implements IUsuarioService {
       uR.save(u);
    }
 
-   @Override
+    @Override
+    public void delete(int id) {
+        uR.deleteById(id);
+    }
+
+    @Override
    public Optional<Usuario> listId(int id) {
       return uR.findById(id);
    }
+
 
 }

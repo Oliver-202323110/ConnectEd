@@ -10,4 +10,5 @@ public interface IUsuarioService {
     public Usuario insert(Usuario u);
     public Optional<Usuario> listId(int id);
     public void update(Usuario u);
+    public void delete(int id);
 }

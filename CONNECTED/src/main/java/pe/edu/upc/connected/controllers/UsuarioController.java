@@ -77,4 +77,17 @@ public class UsuarioController {
         uS.update(usu);
         return ResponseEntity.ok("Usuario actualizado correctamente");
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminar(@PathVariable int id) {
+        Optional<Usuario> usuarioEliminar = uS.listId(id);
+
+        if (usuarioEliminar.isPresent()) {
+            uS.delete(id);
+            return ResponseEntity.ok("Usuario eliminado correctamente");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Usuario no encontrado");
+        }
+    }
 }
