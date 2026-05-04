@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/Mentoria")
 public class MentoriaController {
-   /* @Autowired
+    @Autowired
     private IMentoriaService meS;
     @Autowired
     private IUsuarioService uS;
@@ -36,18 +36,14 @@ public class MentoriaController {
         }
 
         return ResponseEntity.ok(lista);
-    }*/
-    /*@PostMapping("/nuevo")
+    }
+    @PostMapping("/nuevo")
     public ResponseEntity<?> registrar(@RequestBody MentoriaGeneralDTO dto) {
         ModelMapper m = new ModelMapper();
 
-        // 1. Buscamos al ESTUDIANTE
         Optional<Usuario> estudiante = uS.listId(dto.getEstudianteIdUsuario());
-
-        // 2. Buscamos al MENTOR
         Optional<Usuario> mentor = uS.listId(dto.getMentorIdUsuario());
 
-        // 3. Validamos que AMBOS existan
         if (estudiante.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El estudiante no existe");
         }
@@ -55,17 +51,62 @@ public class MentoriaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El mentor no existe");
         }
 
-        // 4. Mapeamos los datos básicos del DTO a la Entidad
         Mentoria ment = m.map(dto, Mentoria.class);
-
-        // 5. Asignamos manualmente los objetos Usuario encontrados
         ment.setEstudiante(estudiante.get());
         ment.setMentor(mentor.get());
-
-        // 6. Guardamos y respondemos
         Mentoria guardada = meS.insert(ment);
         MentoriaGeneralDTO responseDTO = m.map(guardada, MentoriaGeneralDTO.class);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
-    }*/
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable int id) {
+        ModelMapper m = new ModelMapper();
+
+        Optional<Mentoria> mentoria = meS.listId(id);
+        if (mentoria.isPresent()) {
+            MentoriaGeneralDTO dto = m.map(mentoria.get(), MentoriaGeneralDTO.class);
+            return ResponseEntity.ok(dto);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Mentoría no encontrada");
+        }
+    }
+    @PutMapping("/actualizar")
+    public ResponseEntity<String> actualizar(@RequestBody MentoriaGeneralDTO dto) {
+        Optional<Mentoria> existente = meS.listId(dto.getIdMentoria());
+        if (existente.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Mentoría no encontrada");
+        }
+        Optional<Usuario> estudiante = uS.listId(dto.getEstudianteIdUsuario());
+        if (estudiante.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("El estudiante no existe");
+        }
+        Optional<Usuario> mentor = uS.listId(dto.getMentorIdUsuario());
+        if (mentor.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("El mentor no existe");
+        }
+        Mentoria ment = existente.get();
+        ment.setEstadoMentoria(dto.getEstadoMentoria());
+        ment.setFechaInicioMentoria(dto.getFechaInicioMentoria());
+        ment.setFechaFinMentoria(dto.getFechaFinMentoria());
+        ment.setEstudiante(estudiante.get());
+        ment.setMentor(mentor.get());
+        meS.update(ment);
+
+        return ResponseEntity.ok("Mentoría actualizada correctamente");
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminar(@PathVariable int id) {
+        Optional<Mentoria> mentoria = meS.listId(id);
+        if (mentoria.isPresent()) {
+            meS.delete(id);
+            return ResponseEntity.ok("Mentoría eliminada correctamente");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Mentoría no encontrada");
+        }
+    }
 }
