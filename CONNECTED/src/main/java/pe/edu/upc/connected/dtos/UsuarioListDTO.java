@@ -8,7 +8,7 @@ public class UsuarioListDTO {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String correo;
-    private Rol rol;
+    private int idRol;
 
     public int getIdUsuario() {
         return IdUsuario;
@@ -50,11 +50,11 @@ public class UsuarioListDTO {
         this.correo = correo;
     }
 
-    public Rol getRol() {
-        return rol;
+    public int getIdRol() {
+        return idRol;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 }

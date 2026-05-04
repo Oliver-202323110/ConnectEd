@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class UsuarioController {
 
     @Autowired
-    private IUsuarioService usuarioServicio;
+    private IUsuarioService uS;
 
     @Autowired
     private IRolService rolServicio;
@@ -30,7 +30,7 @@ public class UsuarioController {
     @GetMapping("/listarUsuarios")
     public ResponseEntity<List<UsuarioListDTO>> listarUsuarios() {
         ModelMapper m = new ModelMapper();
-        List<UsuarioListDTO> listaUsuarios = usuarioServicio.list().stream()
+        List<UsuarioListDTO> listaUsuarios = uS.list().stream()
                 .map(y -> m.map(y, UsuarioListDTO.class))
                 .collect(Collectors.toList());
         return ResponseEntity.ok(listaUsuarios);
@@ -52,7 +52,7 @@ public class UsuarioController {
         ModelMapper m=new ModelMapper();
         Usuario u=m.map(dto, Usuario.class);
         u.setRol(rol);
-        Usuario usu= usuarioServicio.insert(u);
+        Usuario usu= uS.insert(u);
         UsuarioGeneralDTO responseDTO=m.map(usu,UsuarioGeneralDTO.class);
         return  ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
     }

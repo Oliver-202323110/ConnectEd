@@ -12,24 +12,21 @@ import java.util.Optional;
 @Service
 public class UsuarioServiceImplement implements IUsuarioService {
 
-   @Autowired
-   private IUsuarioRepository  uS;
+    @Autowired
+    private IUsuarioRepository uR;
 
-   @Override
-   public List<Usuario> list() { return uS.findAll(); }
+    @Override
+    public List<Usuario> list() {
+        return uR.findAll();
+    }
 
-   @Override
-   public Optional<Usuario> listId(int id) {
-      return uS.findById(id);
-   public List<Usuario> list() { return usuarioRepositorio.findAll(); }
+    @Override
+    public Usuario insert(Usuario u) {
+        return uR.save(u);
+    }
 
-   @Override
-   public Usuario insert(Usuario u) {
-      return usuarioRepositorio.save(u);
-   }
-
-   @Override
-   public Optional<Usuario> listId(int id) {
-      return usuarioRepositorio.findById(id);
-   }
+    @Override
+    public Optional<Usuario> listId(int id) {
+        return uR.findById(id);
+    }
 }
