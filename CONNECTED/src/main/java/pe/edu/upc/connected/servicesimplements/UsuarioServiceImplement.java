@@ -21,5 +21,15 @@ public class UsuarioServiceImplement implements IUsuarioService {
    @Override
    public Optional<Usuario> listId(int id) {
       return uS.findById(id);
+   public List<Usuario> list() { return usuarioRepositorio.findAll(); }
+
+   @Override
+   public Usuario insert(Usuario u) {
+      return usuarioRepositorio.save(u);
+   }
+
+   @Override
+   public Optional<Usuario> listId(int id) {
+      return usuarioRepositorio.findById(id);
    }
 }
