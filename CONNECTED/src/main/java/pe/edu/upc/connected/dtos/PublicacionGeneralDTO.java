@@ -8,7 +8,7 @@ public class PublicacionGeneralDTO {
     private String tipoPublicacion;
     private String visibilidadPublicacion;
     private LocalDate fechaPublicacion;
-    private int IdUsuario;
+    private int idUsuario;
 
     public int getIdPublicacion() {
         return idPublicacion;
@@ -51,10 +51,10 @@ public class PublicacionGeneralDTO {
     }
 
     public int getIdUsuario() {
-        return IdUsuario;
+        return idUsuario;
     }
 
     public void setIdUsuario(int idUsuario) {
-        IdUsuario = idUsuario;
+        this.idUsuario = idUsuario;
     }
 }
