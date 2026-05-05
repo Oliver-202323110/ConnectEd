@@ -12,11 +12,18 @@ import java.util.List;
 public class PerfilServiceImplement implements IPerfilService {
 
     @Autowired
-    private IPerfilRepository perfilRepositorio;
+    private IPerfilRepository pR;
 
 
     @Override
     public List<Perfil> list() {
-        return perfilRepositorio.findAll();
+        return pR.findAll();
     }
+
+    @Override
+    public Perfil insert(Perfil p) {
+        return pR.save(p);
+    }
+
+
 }
