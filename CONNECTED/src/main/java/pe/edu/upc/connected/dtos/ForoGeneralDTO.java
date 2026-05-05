@@ -11,7 +11,7 @@ public class ForoGeneralDTO {
     private String descripcion;
     private String estado;
     private LocalDate fechaCreacion;
-    private Usuario usuario;
+    private int idUsuario;
 
     public int getIdForo() {
         return IdForo;
@@ -53,11 +53,11 @@ public class ForoGeneralDTO {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }
