@@ -11,8 +11,8 @@ public class TemaForoGeneralDTO {
     private String titulo;
     private String contenido;
     private LocalDate fechaCreacion;
-    private Foro foro;
-    private Usuario usuario;
+    private int idForo;
+    private int idUsuario;
 
     public int getIdTema() {
         return IdTema;
@@ -46,19 +46,19 @@ public class TemaForoGeneralDTO {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Foro getForo() {
-        return foro;
+    public int getIdForo() {
+        return idForo;
     }
 
-    public void setForo(Foro foro) {
-        this.foro = foro;
+    public void setIdForo(int idForo) {
+        this.idForo = idForo;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }

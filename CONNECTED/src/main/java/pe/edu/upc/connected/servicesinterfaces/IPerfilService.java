@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IPerfilService {
     public List<Perfil> list();
+    public Perfil insert(Perfil p);
 }

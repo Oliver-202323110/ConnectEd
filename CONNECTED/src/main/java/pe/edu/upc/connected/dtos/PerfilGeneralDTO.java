@@ -19,7 +19,7 @@ public class PerfilGeneralDTO {
     private String disponibilidad;
     private String visibilidad;
     private LocalDate fechaActualizacion;
-    private Usuario usuario;
+    private int idUsuario;
 
     public int getIdPerfil() {
         return IdPerfil;
@@ -109,11 +109,11 @@ public class PerfilGeneralDTO {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }
