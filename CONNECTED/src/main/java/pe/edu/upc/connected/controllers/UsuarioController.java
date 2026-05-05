@@ -78,7 +78,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario actualizado correctamente");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar-usuario/{id}")
     public ResponseEntity<String> eliminar(@PathVariable int id) {
         Optional<Usuario> usuarioEliminar = uS.listId(id);
 

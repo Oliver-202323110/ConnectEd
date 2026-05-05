@@ -75,7 +75,7 @@ public class ForoController {
         return ResponseEntity.ok("Foro actualizado correctamente");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar-foro/{id}")
     public ResponseEntity<String> eliminar(@PathVariable int id) {
         Optional<Foro> foroEliminar = fS.listId(id);
         if (foroEliminar.isPresent()) {

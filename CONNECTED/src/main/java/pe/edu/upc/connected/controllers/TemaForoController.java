@@ -89,7 +89,7 @@ public class TemaForoController {
         return ResponseEntity.ok("Tema de Foro actualizado correctamente");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar-temaforo/{id}")
     public ResponseEntity<String> eliminar(@PathVariable int id) {
         Optional<TemaForo> temaForoEliminar = tfS.listId(id);
         if (temaForoEliminar.isPresent()) {
