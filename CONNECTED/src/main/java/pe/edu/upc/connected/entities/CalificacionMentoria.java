@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class CalificacionMentoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCalificacionMentoria;
+    private int idCalificacion;
     @Column(name = "puntuacionCalificacionMentoria",nullable =false )
     private int puntuacionCalificacionMentoria;
     @Column(name = "comentarioCalificacionMentoria",length =20 ,nullable =false )
@@ -17,12 +17,12 @@ public class CalificacionMentoria {
     @Column(name = "dateCalificacionMentoria",nullable = false)
     private LocalDate dateCalificacionMentoria;
 
-    @ManyToOne
-    @JoinColumn(name = "idMentoria")
+    @OneToOne
+    @JoinColumn(name = "idMentoria", unique = true, nullable = false)
     private Mentoria mentoria;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
+    @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario usuario;
 
 
@@ -30,8 +30,8 @@ public class CalificacionMentoria {
     public CalificacionMentoria() {
     }
 
-    public CalificacionMentoria(int idCalificacionMentoria, int puntuacionCalificacionMentoria, String comentarioCalificacionMentoria, LocalDate dateCalificacionMentoria, Mentoria mentoria, Usuario usuario) {
-        this.idCalificacionMentoria = idCalificacionMentoria;
+    public CalificacionMentoria(int idCalificacion, int puntuacionCalificacionMentoria, String comentarioCalificacionMentoria, LocalDate dateCalificacionMentoria, Mentoria mentoria, Usuario usuario) {
+        this.idCalificacion = idCalificacion;
         this.puntuacionCalificacionMentoria = puntuacionCalificacionMentoria;
         this.comentarioCalificacionMentoria = comentarioCalificacionMentoria;
         this.dateCalificacionMentoria = dateCalificacionMentoria;
@@ -39,12 +39,12 @@ public class CalificacionMentoria {
         this.usuario = usuario;
     }
 
-    public int getIdCalificacionMentoria() {
-        return idCalificacionMentoria;
+    public int getIdCalificacion() {
+        return idCalificacion;
     }
 
-    public void setIdCalificacionMentoria(int idCalificacionMentoria) {
-        this.idCalificacionMentoria = idCalificacionMentoria;
+    public void setIdCalificacion(int idCalificacion) {
+        this.idCalificacion = idCalificacion;
     }
 
     public int getPuntuacionCalificacionMentoria() {

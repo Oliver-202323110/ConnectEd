@@ -48,11 +48,21 @@ public class CalificacionMentoriaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("La mentoría no existe");
         }
+
+        // Validación para evitar duplicados de calificación por mentoría
+        boolean yaExiste = cS.list().stream()
+                .anyMatch(c -> c.getMentoria().getIdMentoria() == dto.getIdMentoria());
+        if (yaExiste) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("La mentoría ya tiene una calificación asignada.");
+        }
+
         Optional<Usuario> usuario = uS.listId(dto.getIdUsuario());
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("El usuario no existe");
         }
+
         CalificacionMentoria cali = m.map(dto, CalificacionMentoria.class);
 
         cali.setMentoria(mentoria.get());
@@ -80,7 +90,7 @@ public class CalificacionMentoriaController {
     }
     @PutMapping("/actualizar")
     public ResponseEntity<String> actualizar(@RequestBody CalificacionMentoriaGeneralDTO dto) {
-        Optional<CalificacionMentoria> existente = cS.listId(dto.getIdCalificacionMentoria());
+        Optional<CalificacionMentoria> existente = cS.listId(dto.getIdCalificacion());
 
         if (existente.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)

@@ -6,19 +6,19 @@ import pe.edu.upc.connected.entities.Usuario;
 import java.time.LocalDate;
 
 public class CalificacionMentoriaGeneralDTO {
-    private int idCalificacionMentoria;
+    private int idCalificacion;
     private int puntuacionCalificacionMentoria;
     private String comentarioCalificacionMentoria;
     private LocalDate dateCalificacionMentoria;
     private int idMentoria;
     private int idUsuario;
 
-    public int getIdCalificacionMentoria() {
-        return idCalificacionMentoria;
+    public int getIdCalificacion() {
+        return idCalificacion;
     }
 
-    public void setIdCalificacionMentoria(int idCalificacionMentoria) {
-        this.idCalificacionMentoria = idCalificacionMentoria;
+    public void setIdCalificacion(int idCalificacion) {
+        this.idCalificacion = idCalificacion;
     }
 
     public int getPuntuacionCalificacionMentoria() {
