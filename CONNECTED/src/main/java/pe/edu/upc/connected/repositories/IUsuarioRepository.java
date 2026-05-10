@@ -25,5 +25,8 @@ public interface IUsuarioRepository  extends JpaRepository<Usuario,Integer> {
     @Query(value = "SELECT * FROM usuario WHERE fecha_registro BETWEEN :inicio AND :fin", nativeQuery = true)
     List<Usuario> buscarUsuariosPorRangoFecha(@Param("inicio") LocalDate inicio, @Param("fin") LocalDate fin);
 
+    //Cantidad de usuarios por estado de cuenta
+    @Query(value = "SELECT estado_cuenta, COUNT(*) FROM usuario GROUP BY estado_cuenta", nativeQuery = true)
+    List<Object[]> contarUsuariosPorEstadoCuenta();
 
 }

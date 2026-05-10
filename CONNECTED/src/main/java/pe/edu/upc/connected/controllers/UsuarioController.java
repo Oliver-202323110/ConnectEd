@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.connected.dtos.CantidadEstadoDTO;
 import pe.edu.upc.connected.dtos.UsuarioGeneralDTO;
 import pe.edu.upc.connected.dtos.UsuarioListDTO;
 import pe.edu.upc.connected.entities.Rol;
@@ -12,6 +13,7 @@ import pe.edu.upc.connected.entities.Usuario;
 import pe.edu.upc.connected.servicesinterfaces.IRolService;
 import pe.edu.upc.connected.servicesinterfaces.IUsuarioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -89,5 +91,21 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Usuario no encontrado");
         }
+    }
+
+    @GetMapping("/cantidad-estados")
+    public ResponseEntity<?> obtenerCantidad(){
+        List<Object[]> lista = uS.buscarNativeQuery();
+        if (lista.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay registros");
+        }
+        List<CantidadEstadoDTO> respuesta = new ArrayList<>();
+        for (Object[] fila : lista){
+            CantidadEstadoDTO dto = new CantidadEstadoDTO();
+            dto.setEstadoCuenta(((String)fila[0]));
+            dto.setCantidad(((Number)fila[1]).intValue());
+            respuesta.add(dto);
+        }
+        return ResponseEntity.ok(respuesta);
     }
 }

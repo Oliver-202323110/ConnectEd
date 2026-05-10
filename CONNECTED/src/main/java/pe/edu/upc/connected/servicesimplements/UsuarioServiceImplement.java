@@ -36,6 +36,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
+    public List<Object[]> buscarNativeQuery() {
+        return uR.contarUsuariosPorEstadoCuenta();
+    }
+
+    @Override
    public Optional<Usuario> listId(int id) {
       return uR.findById(id);
    }
