@@ -13,5 +13,5 @@ public interface IPublicacionService {
     public void update(Publicacion p);
     public void delete(int id);
     public List<Publicacion> buscarPorRangoDeFechas(LocalDate f1, LocalDate f2);
-    public List<Object[]> countPublicacionesByUser();
+    public int countPublicacionesByUserId(int id);
 }

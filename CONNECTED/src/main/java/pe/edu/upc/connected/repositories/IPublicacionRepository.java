@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface IPublicacionRepository extends JpaRepository<Publicacion,Integer> {
-    @Query("SELECT p.usuario.nombres, COUNT(p) FROM Publicacion p GROUP BY p.usuario.nombres")
-    List<Object[]> countPublicacionesByUser();
+    @Query("SELECT COUNT(p) FROM Publicacion p WHERE p.usuario.idUsuario = :id")
+    int countPublicacionesByUserId(@Param("id") int id);
 
     @Query("SELECT p FROM Publicacion p WHERE p.fechaPublicacion BETWEEN :f1 AND :f2")
     List<Publicacion> buscarPorRangoDeFechas(@Param("f1") LocalDate f1, @Param("f2") LocalDate f2);

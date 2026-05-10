@@ -51,9 +51,9 @@ public class PublicacionController {
     }
 
     @GetMapping("/cantidad-por-usuario")
-    public ResponseEntity<List<Object[]>> obtenerCantidadPorUsuario() {
-        List<Object[]> lista = pS.countPublicacionesByUser();
-        return ResponseEntity.ok(lista);
+    public ResponseEntity<Integer> obtenerCantidadPorUsuario(@RequestParam int idUsuario) {
+        int cantidad = pS.countPublicacionesByUserId(idUsuario);
+        return ResponseEntity.ok(cantidad);
     }
 
     @PostMapping("/nuevo")

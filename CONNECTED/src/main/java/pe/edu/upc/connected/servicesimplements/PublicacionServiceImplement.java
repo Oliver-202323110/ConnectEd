@@ -46,7 +46,7 @@ public class PublicacionServiceImplement implements IPublicacionService {
     }
 
     @Override
-    public List<Object[]> countPublicacionesByUser() {
-        return pR.countPublicacionesByUser();
+    public int countPublicacionesByUserId(int id) {
+        return pR.countPublicacionesByUserId(id);
     }
 }
