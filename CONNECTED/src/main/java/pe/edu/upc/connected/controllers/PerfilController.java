@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.connected.dtos.PerfilGeneralDTO;
 import pe.edu.upc.connected.dtos.UsuarioGeneralDTO;
 import pe.edu.upc.connected.dtos.UsuarioListDTO;
@@ -22,6 +19,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/perfiles")
 public class PerfilController {
 
     @Autowired
